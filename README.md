@@ -76,12 +76,16 @@ Sunucuda `/var/www/akts.tr/`, nginx doğrudan diskten servis ediyor.
 Süreç yok, pm2 gerekmiyor.
 
 ```bash
-npm run build
-rsync -av --delete dist/ akts:/var/www/akts.tr/
+npm run build && rsync -av dist/ akts:/var/www/akts.tr/
 ```
 
+> **`--delete` KULLANMA.** `/var/www/akts.tr/` altında bu depoya ait
+> olmayan iki klasör var — `media/` ve `tiktok/callback/` (n8n'in
+> Reddit/TikTok kolu, sahibi `www-data`). `--delete` ikisini de siler.
+>
 > Vite çıktısı `dist/static/` altına yazılıyor, `dist/assets/` altına
-> **değil**. Sebep: sunucuda `/var/www/akts.tr/assets/` içinde elle
-> konmuş dosyalar var; `assets` adı kullanılsaydı her yayında onların
-> üstüne yazılırdı. `--delete` kullanıyorsan `public/assets/` içine
-> sunucudaki dosyaların da durduğundan emin ol.
+> **değil**: sunucudaki `/var/www/akts.tr/assets/` elle konmuş
+> dosyalar için, `assets` adı kullanılsaydı her yayında üstüne yazardı.
+>
+> Eski `static/` dosyaları `--delete` olmadığı için birikir; ara sıra
+> elle temizlemek gerekebilir (`ssh akts 'ls /var/www/akts.tr/static'`).

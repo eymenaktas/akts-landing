@@ -50,8 +50,8 @@ export default function App() {
             className="group flex items-center gap-2 text-[15px] font-semibold tracking-[-0.02em] text-muted-foreground transition-colors duration-300 hover:text-foreground"
           >
             <span
-              className="h-1.5 w-1.5 rounded-full"
-              style={{ background: 'var(--c-mailapp)' }}
+              className="h-1.5 w-1.5 rounded-full motion-safe:animate-breathe"
+              style={{ background: 'var(--c-mailapp)', animationDuration: '7s' }}
               aria-hidden="true"
             />
             akts.tr
@@ -59,7 +59,7 @@ export default function App() {
           <ThemeToggle />
         </header>
 
-        <main className="flex-1 pb-10 pt-10 sm:pt-16">
+        <main className="my-auto flex-1 pb-10 pt-10 sm:pt-16">
           <h1
             className="anim max-w-[16ch] text-[clamp(2.25rem,7.5vw,4rem)] font-semibold leading-[1.04] tracking-[-0.045em]"
             style={{ '--d': '.02s' } as CSSProperties}
