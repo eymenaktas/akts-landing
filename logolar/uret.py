@@ -40,6 +40,17 @@ LOGOLAR = {
          '<path d="M25 36.5 H39"/>'],
         5.4, False,
     ),
+    "jarvis": (
+        "#22d3ee", "#8b5cf6",
+        # dinleyen halka + merkez nokta. Yaylar 150 derece: 90 derecelik
+        # yaylar 20 pikselde parantez "( )" gibi okunuyordu. Nokta,
+        # yuvarlak uçlu sıfır uzunlukta bir çizgi — jeneratör yalnız
+        # stroke çizdiği için dolgulu daire kullanılamıyor.
+        ['<path d="M36.14 16.55 A16.0 16.0 0 0 1 36.14 47.45"/>',
+         '<path d="M27.86 47.45 A16.0 16.0 0 0 1 27.86 16.55"/>',
+         '<path d="M32 32 h0"/>'],
+        6.5, False,
+    ),
     # TrCore ve TrKit: ikisi de TrPrac'ın kendi maskotunu kullanıyor
     # (assets/trprac.png) — ikisi de o ekosistemin parçası. SVG üretilmiyor.
 }

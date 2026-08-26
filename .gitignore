@@ -5,3 +5,6 @@
 
 node_modules
 dist
+
+# jeneratör çıktısı — kanonik kopyalar logolar/*.svg
+logolar/cikti/
