@@ -5,30 +5,70 @@ siteleri ve servisleri tek yerde listeler.
 
 ## Yapı
 
-Tek `index.html` — CSS ve JS gömülü, build adımı yok. Logolar sayfanın
-sonundaki `<defs>` bloğunda SVG olarak duruyor.
+Vite + React + TypeScript + Tailwind, shadcn/ui kurulumu hazır.
+(2026-08-26'ya kadar tek dosya, gömülü CSS'li düz HTML'di; eski hâli
+`git show 815516a:index.html` ile açılır.)
 
-- **Genel** — kişiye bağlı olmayan servisler (Aktaş Mail, OyunHub, n8n)
-- **Kişi bölümleri** — her kişi için portfolyo + iletişim satırları
+```
+index.html          Vite girişi — tema, FOUC'u önlemek için burada yazılıyor
+src/
+  App.tsx           sayfa düzeni
+  index.css         tasarım token'ları (shadcn biçiminde) + özel sınıflar
+  data/site.ts      SAYFANIN TÜM İÇERİĞİ — servisler ve kişiler
+  components/
+    Aurora.tsx      üstteki renk sisi (blur'lu gradient, WebGL yok)
+    GlowCard.tsx    imleci takip eden kenar parıltısı
+    Logos.tsx       SVG logo tanımları (<defs> + <use>)
+    ServiceCard.tsx servis kartı — normal ve "öne çıkan" geniş biçim
+    LinkRow.tsx     kişi bölümlerindeki bağlantı satırı
+    PersonSection.tsx
+    ThemeToggle.tsx
+    ui/             shadcn/ui bileşenleri
+```
 
-## Yeni kişi ekleme
+## Geliştirme
 
-`index.html` içinde `══ KİŞİ BÖLÜMÜ ══` yorumundaki şablon bloğu
-kopyalanır. Üç şeye dikkat:
+```bash
+npm install
+npm run dev
+```
 
-1. `.mono` içine baş harfler (fotoğraf varsa `<img>`)
-2. `--d` gecikmeleri bir öncekinden ~.06s büyük olsun (animasyon sırayla aksın)
-3. Her satıra `style="--accent:var(--c-...)"` ile rengini ver
+## Yeni kişi / servis ekleme
 
-> HTML yorumları iç içe geçemez — şablon bloğunun içine ikinci bir
-> `<!-- -->` koyma, ilk `-->` dış yorumu erken kapatır ve şablon canlı
-> HTML olarak render olur.
+`src/index.html` kopyalanacak blok yok — **`src/data/site.ts`** içindeki
+`people` ya da `services` dizisine bir nesne ekle. Animasyon gecikmeleri
+ve düzen kendiliğinden hesaplanıyor.
 
-## Tasarım
+Yeni bir logo gerekiyorsa `src/components/Logos.tsx` içindeki `<defs>`
+bloğuna bir `<g id="i-...">` ekle ve adını `LogoName` tipine yaz.
 
-Taban monokrom; renk yalnızca satır logolarında ve accent'lerde.
-Koyu/açık tema, `prefers-color-scheme` + elle geçiş (localStorage).
-Aktaş Mail satırının etrafında yumuşak bir hâle var.
+## Bileşen kaynağı: 21st.dev
+
+Proje shadcn/ui kurallarına göre kuruldu, `components.json` yerinde.
+[21st.dev](https://21st.dev) bileşenleri doğrudan kurulabilir:
+
+```bash
+npx shadcn@latest add "https://21st.dev/r/<kullanıcı>/<bileşen>"
+```
+
+> 21st.dev kayıt defteri **hesap istiyor** — giriş yapılmadan kod
+> indirilemiyor (`{"error":"Authentication required"}`). Ücretsiz hesap
+> açıp giriş yaptıktan sonra komut çalışıyor.
+
+## Tasarım kararları
+
+- Taban monokrom; renk yalnızca servis kartlarının/satırlarının
+  accent'inde. Bu accent CSS'te **`--brand`** adını taşıyor, `--accent`
+  değil — `--accent` shadcn/ui'nin kendi token'ı, çakışsaydı içine
+  konan her shadcn bileşeni sessizce yanlış renk alırdı.
+- Koyu/açık tema; `prefers-color-scheme` + elle geçiş (localStorage).
+  **Tema geçişinde animasyon yok** — gövde rengi yumuşak geçerken kart
+  zeminleri anında değiştiği için yazılar yarım saniye kayboluyordu.
+- Aktaş Mail "öne çıkan": satırın tamamını kaplayan geniş kart,
+  etrafında yavaş nefes alan bir hâle (7 sn).
+- `--dim` rengi ölçülerek seçildi: açık temada 4.5:1, koyuda 4.9:1.
+  Önceki değerler 2.7:1 ve 3.1:1'di.
+- `prefers-reduced-motion` tüm animasyonları kapatıyor.
 
 ## Yayın
 
@@ -36,5 +76,12 @@ Sunucuda `/var/www/akts.tr/`, nginx doğrudan diskten servis ediyor.
 Süreç yok, pm2 gerekmiyor.
 
 ```bash
-scp index.html favicon.svg akts:/var/www/akts.tr/
+npm run build
+rsync -av --delete dist/ akts:/var/www/akts.tr/
 ```
+
+> Vite çıktısı `dist/static/` altına yazılıyor, `dist/assets/` altına
+> **değil**. Sebep: sunucuda `/var/www/akts.tr/assets/` içinde elle
+> konmuş dosyalar var; `assets` adı kullanılsaydı her yayında onların
+> üstüne yazılırdı. `--delete` kullanıyorsan `public/assets/` içine
+> sunucudaki dosyaların da durduğundan emin ol.

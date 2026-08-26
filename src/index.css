@@ -1,0 +1,307 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════
+   Renk kararı değişmedi: taban monokrom, renk yalnızca servis
+   satırlarının accent'inde. Değerler shadcn/ui'nin beklediği
+   HSL-üçlü biçiminde yazıldı ki 21st.dev bileşenleri kendi
+   `bg-background` / `text-muted-foreground` sınıflarıyla doğru
+   renkleri alsın.
+   ═══════════════════════════════════════════════════════════════ */
+@layer base {
+  :root,
+  [data-theme='light'] {
+    --background: 240 33% 98.8%;
+    --foreground: 240 5.6% 7.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 5.6% 7.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 5.6% 7.1%;
+    --primary: 240 5.6% 7.1%;
+    --primary-foreground: 240 33% 98.8%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 5.6% 7.1%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 2.2% 44.1%;
+    --accent: 240 5% 96%;
+    --accent-foreground: 240 5.6% 7.1%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 240 5.6% 7.1%;
+    --radius: 0.85rem;
+
+    /* çizgi/soluk ton — eski --line ve --dim'in karşılığı */
+    --hairline: 0 0% 0% / 0.1;
+    --hairline-hi: 0 0% 0% / 0.2;
+    /* Ölçülerek seçildi: #74747a, #fbfbfd üstünde 4.5:1.
+       Eski #9a9aa0 2.71:1'di — küçük punto etiketler için düşük. */
+    --dim: 240 4% 46.3%;
+
+    /* Servis renkleri. Satır/kart bunları --brand olarak alıyor;
+       adı bilerek --accent DEĞİL — shadcn'in kendi --accent token'ı
+       (yukarıda, HSL üçlüsü) ile çakışırdı ve içine konan her
+       shadcn bileşeni sessizce yanlış renk alırdı. */
+    --c-mailapp: #1a73e8;
+    --c-oyun: #6a42f0;
+    --c-n8n: #d43a60;
+    --c-portfolyo: #0a7ae0;
+    --c-mail: #0d9d63;
+    --c-github: #24292f;
+
+    --ring-a: rgba(0, 0, 0, 0.28);
+    --ring-b: rgba(0, 0, 0, 0.06);
+
+    /* Açık temada sis çok daha zayıf: beyaz zemin üstünde aynı
+       opaklık gri bir perde oluyor ve metnin kontrastını düşürüyor. */
+    --aurora-strength: 0.10;
+  }
+
+  [data-theme='dark'] {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 96.1%;
+    --card: 0 0% 7.1%;
+    --card-foreground: 0 0% 96.1%;
+    --popover: 0 0% 7.1%;
+    --popover-foreground: 0 0% 96.1%;
+    --primary: 0 0% 96.1%;
+    --primary-foreground: 0 0% 3.9%;
+    --secondary: 0 0% 10.2%;
+    --secondary-foreground: 0 0% 96.1%;
+    --muted: 0 0% 10.2%;
+    --muted-foreground: 240 2.3% 56.7%;
+    --accent: 0 0% 10.2%;
+    --accent-foreground: 0 0% 96.1%;
+    --destructive: 0 63% 45%;
+    --destructive-foreground: 0 0% 96.1%;
+    --border: 0 0% 14.5%;
+    --input: 0 0% 14.5%;
+    --ring: 0 0% 83%;
+
+    --hairline: 0 0% 100% / 0.09;
+    --hairline-hi: 0 0% 100% / 0.18;
+    /* #7e7e84 — #0a0a0a üstünde 4.91:1, kart zemini #121212
+       üstünde 4.64:1. Eski #5e5e63 3.07:1'di. */
+    --dim: 240 3% 50.6%;
+
+    --c-mailapp: #4d90ff;
+    --c-oyun: #8b6cff;
+    --c-n8n: #ea4b71;
+    --c-portfolyo: #3d9bff;
+    --c-mail: #26c281;
+    --c-github: #d8d8de;
+
+    --ring-a: rgba(255, 255, 255, 0.32);
+    --ring-b: rgba(255, 255, 255, 0.07);
+
+    --aurora-strength: 0.22;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-size: 17px;
+    line-height: 1.6;
+    letter-spacing: -0.011em;
+    min-height: 100dvh;
+    /* Tema geçişinde BİLEREK animasyon yok. Gövdenin rengi yumuşak
+       geçerken kartların zemini anında değiştiği için, geçiş
+       süresince koyu kartın üstünde koyu yazı kalıyordu — yazılar
+       yarım saniye görünmez oluyordu. */
+  }
+
+  ::selection {
+    @apply bg-foreground text-background;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background rounded-md;
+  }
+}
+
+@layer utilities {
+  /* İnce ayraç çizgisi — token değil, opaklıklı çizgi olması gerekiyor */
+  .hairline {
+    border-color: hsl(var(--hairline));
+  }
+  .text-dim {
+    color: hsl(var(--dim));
+  }
+
+  /* Giriş animasyonu: --d ile sıraya sokuluyor */
+  .anim {
+    animation: rise 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--d, 0s);
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* Hareket azaltma isteğine saygı — tüm süreleri kısalt, girişleri kapat */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .anim {
+    animation: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Glow card — imleci takip eden kenar parıltısı.
+   İki katman: (1) kenarlığı boyayan maskeli ::before,
+   (2) kartın içine düşen çok soluk ışık ::after.
+   Konum JS'ten --mx/--my ile geliyor; imleç dışarıdayken --glow:0
+   olduğu için ikisi de tamamen sönük.
+   ═══════════════════════════════════════════════════════════════ */
+@layer components {
+  .glow-card {
+    position: relative;
+    isolation: isolate;
+    border-radius: var(--radius);
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--hairline));
+    transition: border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .glow-card::before,
+  .glow-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: var(--glow, 0);
+    transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  /* kenarlık: 1px'lik halkayı maskeyle bırakıyoruz */
+  .glow-card::before {
+    padding: 1px;
+    background: radial-gradient(
+      220px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in srgb, var(--brand, hsl(var(--foreground))) 85%, transparent),
+      transparent 70%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+  }
+  /* iç ışık: metnin arkasında kalsın diye z-index -1 */
+  .glow-card::after {
+    z-index: -1;
+    background: radial-gradient(
+      260px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in srgb, var(--brand, hsl(var(--foreground))) 13%, transparent),
+      transparent 72%
+    );
+  }
+  .glow-card:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Öne çıkan kartın hâlesi.
+     KENDİ ELEMENTİ, .glow-card'ın ::before'u DEĞİL — ikisi aynı
+     sözde-elementi paylaşsaydı biri ötekini sessizce ezerdi. */
+  .featured-halo {
+    position: absolute;
+    inset: -12px;
+    z-index: -1;
+    border-radius: calc(var(--radius) + 12px);
+    pointer-events: none;
+    background: radial-gradient(
+      60% 110% at 22% 10%,
+      color-mix(in srgb, var(--brand) 26%, transparent),
+      transparent 70%
+    );
+    animation: breathe 7s ease-in-out infinite;
+  }
+  @keyframes breathe {
+    0%,
+    100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+}
+
+/* Kişi bölümlerindeki bağlantı satırı.
+   Hover'da hem çizgi hem glif hem ok accent rengine geçiyor; bu üç
+   kararı tek yerde tutmak için sınıf, Tailwind'de dağıtmak yerine. */
+@layer components {
+  .link-row {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.9rem 0.25rem;
+    border-bottom: 1px solid hsl(var(--hairline));
+    transition: padding-left 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  li:last-child .link-row {
+    border-bottom: 0;
+    padding-bottom: 0.25rem;
+  }
+  .link-row:hover {
+    padding-left: 0.65rem;
+    border-color: color-mix(in srgb, var(--brand) 45%, hsl(var(--hairline)));
+  }
+  .link-row .row-ico {
+    color: hsl(var(--dim));
+    transition: color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.35s cubic-bezier(0.34, 1.32, 0.44, 1);
+  }
+  .link-row:hover .row-ico {
+    color: var(--brand);
+    transform: scale(1.12);
+  }
+  .link-row .row-arw {
+    color: hsl(var(--dim));
+    transition: color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-row:hover .row-arw {
+    color: var(--brand);
+    transform: translateX(3px);
+  }
+}
+
+/* Öne çıkan logonun kendi parıltısı — opaklık değil drop-shadow
+   nabzı, yoksa logo sönüp yanıyormuş gibi görünüyor. */
+@layer components {
+  .pulse-glow {
+    animation: glow-pulse 7s ease-in-out infinite;
+  }
+  @keyframes glow-pulse {
+    0%,
+    100% {
+      filter: drop-shadow(0 0 3px color-mix(in srgb, var(--brand) 40%, transparent));
+    }
+    50% {
+      filter: drop-shadow(0 0 9px color-mix(in srgb, var(--brand) 78%, transparent));
+    }
+  }
+}

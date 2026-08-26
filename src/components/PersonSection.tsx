@@ -1,0 +1,61 @@
+import { useState, type CSSProperties } from 'react'
+import { GlowCard } from '@/components/GlowCard'
+import { LinkRow } from '@/components/LinkRow'
+import type { Person } from '@/data/site'
+
+/** Fotoğraf yoksa ya da yüklenemezse baş harflere düşer. */
+function Avatar({ person }: { person: Person }) {
+  const [broken, setBroken] = useState(false)
+  const showImage = person.avatar && !broken
+
+  return (
+    <span
+      className="grid h-14 w-14 shrink-0 place-items-center rounded-full p-[2px] shadow-[0_6px_20px_rgba(0,0,0,.35)] transition-transform duration-500 group-hover/head:-rotate-6 group-hover/head:scale-105"
+      style={{ background: 'linear-gradient(135deg,var(--ring-a),var(--ring-b))' }}
+    >
+      {showImage ? (
+        <img
+          src={person.avatar}
+          alt={person.name}
+          width={56}
+          height={56}
+          decoding="async"
+          onError={() => setBroken(true)}
+          className="h-full w-full rounded-full object-cover"
+        />
+      ) : (
+        <span className="grid h-full w-full place-items-center rounded-full bg-secondary text-sm font-bold tracking-[-0.04em]">
+          {person.initials}
+        </span>
+      )}
+    </span>
+  )
+}
+
+export function PersonSection({ person, delay }: { person: Person; delay: number }) {
+  return (
+    <GlowCard
+      className="anim mt-4 overflow-hidden p-5 sm:p-6"
+      style={{ '--d': `${delay}s` } as CSSProperties}
+    >
+      {/* Geniş ekranda başlık solda sabit, bağlantılar sağda esner.
+          Dar ekranda alt alta düşer — tek kişi varken kartın yarısı
+          boş kalmasın diye kart hep tam genişlikte. */}
+      <div className="flex flex-col gap-5 md:flex-row md:items-start md:gap-8">
+        <div className="group/head flex items-center gap-4 md:w-64 md:shrink-0">
+          <Avatar person={person} />
+          <div className="min-w-0">
+            <h3 className="text-lg font-semibold tracking-[-0.03em]">{person.name}</h3>
+            <p className="text-sm leading-snug text-muted-foreground">{person.role}</p>
+          </div>
+        </div>
+        <ul className="min-w-0 flex-1 border-t pt-1 md:border-l md:border-t-0 md:pl-8 md:pt-0"
+            style={{ borderColor: 'hsl(var(--hairline))' }}>
+          {person.links.map((link, i) => (
+            <LinkRow key={link.href} item={link} delay={delay + 0.06 * (i + 1)} />
+          ))}
+        </ul>
+      </div>
+    </GlowCard>
+  )
+}
