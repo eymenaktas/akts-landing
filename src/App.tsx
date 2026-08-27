@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
 import { Aurora } from '@/components/Aurora'
+import { Footer } from '@/components/Footer'
 import { LogoDefs } from '@/components/Logos'
 import { PersonSection } from '@/components/PersonSection'
 import { ServiceCard } from '@/components/ServiceCard'
@@ -101,18 +102,7 @@ export default function App() {
           </section>
         </main>
 
-        <footer
-          className="flex items-center justify-between border-t py-7 text-[13px] text-dim"
-          style={{ borderColor: 'hsl(var(--hairline))' }}
-        >
-          <p>© {new Date().getFullYear()} akts.tr</p>
-          <a
-            href="https://github.com/eymenaktas"
-            className="transition-colors duration-300 hover:text-foreground"
-          >
-            github.com/eymenaktas
-          </a>
-        </footer>
+        <Footer />
       </div>
     </>
   )

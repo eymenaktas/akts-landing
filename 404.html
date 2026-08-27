@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Sayfa bulunamadı · akts.tr</title>
+<meta name="description" content="Aradığınız sayfa bulunamadı." />
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#0a0a0a" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/favicon.svg" />
+<script>
+/* index.html ile AYNI betik. Tema React'ten önce yazılmazsa sayfa bir
+   kare koyu açılıp açık temaya atlıyor (FOUC). */
+(function () {
+  try {
+    var t = localStorage.getItem('akts-theme');
+    if (t !== 'dark' && t !== 'light') {
+      t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', t);
+    document.querySelector('meta[name="theme-color"]')
+      .setAttribute('content', t === 'dark' ? '#0a0a0a' : '#fbfbfd');
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<div id="root"></div>
+<script type="module" src="/src/notfound.tsx"></script>
+</body>
+</html>
