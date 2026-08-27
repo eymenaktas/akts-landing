@@ -1,35 +1,39 @@
 /**
- * Alt bilgi. Yapı ve giriş animasyonu 21st.dev'in "footer-section"
- * bileşeninden; içerik değil.
+ * Alt bilgi. Düzen fikri 21st.dev'in "footer-section" bileşeninden;
+ * içeriği ve animasyon tekniği değil.
  *
  * Orijinal bileşen bir SaaS pazarlama footer'ı: Product / Pricing /
  * Testimonials / Changelog / Brand sütunları ve dört sosyal ağ ikonu.
  * akts.tr'de bunların HİÇBİRİ yok — birebir kopyalansaydı sayfa on
- * küsur ölü bağlantıyla dolardı. O yüzden korunanlar:
+ * küsur ölü bağlantıyla dolardı. İçerik `site.ts`'ten geliyor; yeni
+ * servis eklendiğinde footer kendiliğinden güncellenir.
  *
- *   - `AnimatedContainer` deseni ve kademeli gecikme
- *   - `useReducedMotion` ile animasyonu tamamen atlama
- *   - ızgara düzeni ve üstteki ince ışık çizgisi
+ * BU FOOTER'DA GİRİŞ ANİMASYONU YOK — bilerek.
  *
- * BİR HATA DÜZELTİLDİ. Orijinal bileşen açılışı `whileInView` ile
- * yapıyor: eleman `opacity: 0` başlıyor ve IntersectionObserver
- * tetiklenince görünür oluyor. Sayfanın en altına anında atlandığında
- * (bağlantı çapası, tarayıcının konum geri yüklemesi, Cmd+↓) footer'ın
- * üst sütunu görünüm alanının TAMAMEN üstünde kalıyor, observer hiç
- * tetiklenmiyor ve sütun kalıcı olarak görünmez kalıyor. Ölçüldü:
- * `opacity: 0`, `filter: blur(4px)`, diğer üç sütun 1.
+ * Sayfanın geri kalanı `.anim` sınıfını kullanıyor (opacity 0'dan
+ * açılan `rise` keyframe'i) ve 21st.dev'in orijinali de `motion` ile
+ * aynı şeyi yapıyor. Her iki yaklaşım da içeriği "animasyon çalışana
+ * kadar görünmez" yapıyor ve bu üç şekilde patlıyor — üçü de ölçüldü:
  *
- * Bu footer'da gizlilik bağlantısı var; hukuki bir bağlantının görünüp
- * görünmemesi kaydırma şansına bırakılamaz. O yüzden açılış
- * `whileInView` yerine `animate` ile — yani bileşen bağlanır bağlanmaz.
- * Footer zaten sayfanın en altında; kullanıcı oraya vardığında
- * animasyon çoktan bitmiş oluyor, görsel olarak kaybedilen bir şey yok.
+ *  1. `whileInView`: sayfanın en altına anında atlandığında üst sütun
+ *     görünüm alanının tamamen üstünde kalıyor, IntersectionObserver
+ *     hiç tetiklenmiyor, sütun kalıcı olarak görünmez.
+ *  2. `motion` + `animate`: sayfa ARKA PLAN SEKMESİNDE açıldığında
+ *     motion animasyonu erteliyor. 19 saniye sonra ölçüldü: dört sütun
+ *     da `opacity: 0`, inline style hâlâ `blur(4px); opacity: 0`.
+ *  3. CSS `.anim`: aynı senaryoda animasyon hiç başlamıyor ve
+ *     `animation-fill-mode: both` geriye doğru `from` durumunu
+ *     (opacity 0) uyguluyor. Ölçüldü: dört sütun da `0`.
  *
- * İçerik `site.ts`'ten geliyor. Yeni servis eklendiğinde footer
- * kendiliğinden güncellenir; burada değişiklik gerekmez.
+ * Bu footer'da GİZLİLİK BAĞLANTISI var. Hukuki bir bağlantının
+ * görünmesi ne kaydırma şansına, ne sekmenin önde olmasına, ne de
+ * JS'in çalışmasına bağlanabilir. Footer zaten sayfanın en altında;
+ * kullanıcı oraya vardığında animasyon çoktan bitmiş olurdu, yani
+ * görsel olarak kaybedilen bir şey de yok.
+ *
+ * Sayfanın geri kalanındaki `.anim` kullanımına DOKUNULMADI — o
+ * sitenin mevcut tasarım kararı ve içeriği hukuki değil.
  */
-import type { ComponentProps, ReactNode } from 'react'
-import { motion, useReducedMotion } from 'motion/react'
 import { people, services } from '@/data/site'
 
 type FooterLink = { title: string; href: string; external?: boolean }
@@ -76,7 +80,7 @@ export function Footer() {
       />
 
       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-        <AnimatedContainer className="space-y-3">
+        <div className="space-y-3">
           <div className="flex items-center gap-2 text-[15px] font-semibold tracking-[-0.02em]">
             <span
               className="h-1.5 w-1.5 rounded-full"
@@ -89,10 +93,10 @@ export function Footer() {
             Bu alan adı altındaki siteler ve servisler. Analitik yok, izleme yok.
           </p>
           <p className="pt-2 text-[13px] text-dim">© {new Date().getFullYear()} akts.tr</p>
-        </AnimatedContainer>
+        </div>
 
-        {columns.map((column, index) => (
-          <AnimatedContainer key={column.label} delay={0.1 + index * 0.08}>
+        {columns.map((column) => (
+          <div key={column.label}>
             <h3 className="text-xs font-semibold uppercase tracking-[0.1em] text-dim">
               {column.label}
             </h3>
@@ -111,37 +115,9 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </AnimatedContainer>
+          </div>
         ))}
       </div>
     </footer>
-  )
-}
-
-type ViewAnimationProps = {
-  delay?: number
-  className?: ComponentProps<typeof motion.div>['className']
-  children: ReactNode
-}
-
-function AnimatedContainer({ className, delay = 0.1, children }: ViewAnimationProps) {
-  const shouldReduceMotion = useReducedMotion()
-
-  // Orijinal bileşen burada çıplak `children` döndürüyor ve sarmalayıcı
-  // div'i kaybediyor; className'i de birlikte kaybediyor, düzen bozuluyor.
-  // Burada div korunuyor, yalnızca hareket atılıyor.
-  if (shouldReduceMotion) {
-    return <div className={className}>{children}</div>
-  }
-
-  return (
-    <motion.div
-      initial={{ filter: 'blur(4px)', translateY: -8, opacity: 0 }}
-      animate={{ filter: 'blur(0px)', translateY: 0, opacity: 1 }}
-      transition={{ delay, duration: 0.8 }}
-      className={className}
-    >
-      {children}
-    </motion.div>
   )
 }

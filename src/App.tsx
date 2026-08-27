@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react'
-import { Aurora } from '@/components/Aurora'
+import { AuroraGL } from '@/components/AuroraGL'
 import { Footer } from '@/components/Footer'
 import { LogoDefs } from '@/components/Logos'
 import { PersonSection } from '@/components/PersonSection'
@@ -31,7 +31,7 @@ function SectionTitle({
 export default function App() {
   return (
     <>
-      <Aurora />
+      <AuroraGL />
       {/* İnce nokta dokusu — düz zemine derinlik veriyor, okunurluğa
           dokunmayacak kadar soluk (%. birkaç). */}
       <div

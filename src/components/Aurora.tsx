@@ -1,11 +1,17 @@
 /**
+ * ARTIK FALLBACK. 2026-08-27'den beri asıl Aurora AuroraGL.tsx
+ * (React Bits'in WebGL sürümü). Bu bileşen doğrudan kullanılmıyor;
+ * AuroraGL üç durumda buna düşüyor:
+ *   - `prefers-reduced-motion: reduce`
+ *   - WebGL bağlamı alınamıyor (eski cihaz, GPU engellenmiş)
+ *   - Renderer kurulumu hata veriyor
+ * Yani SİLME — WebGL'i olmayan ziyaretçinin gördüğü şey bu.
+ *
  * Sayfanın üst tarafındaki renk sisi. Eskiden body::before'daki iki
  * radial-gradient'ti; burada üç katmana çıkıp yavaşça kayıyor.
  *
- * WebGL yok, canvas yok — sadece blur'lu gradient. Sebep: sunucu
- * statik dosya servis ediyor ve sayfa telefonda da ilk saniyede
- * açılmalı. `prefers-reduced-motion` altında animasyon duruyor
- * (index.css'teki genel kural), sis kalıyor.
+ * WebGL yok, canvas yok — sadece blur'lu gradient. `prefers-reduced-motion`
+ * altında animasyon duruyor (index.css'teki genel kural), sis kalıyor.
  *
  * İki tuzak, ikisi de yaşandı:
  *  1. `overflow-hidden` blob'ları kutunun alt kenarında KESİYOR ve
