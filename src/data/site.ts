@@ -4,7 +4,7 @@
    `icon` değeri src/components/Logos.tsx içindeki tanımın adı.
    ═══════════════════════════════════════════════════════════════ */
 
-export type LogoName = 'mail' | 'oyun' | 'n8n' | 'kod' | 'zarf' | 'github'
+export type LogoName = 'mail' | 'oyun' | 'n8n' | 'kod' | 'zarf' | 'github' | 'ezan'
 
 export type Link = {
   name: string
@@ -80,5 +80,25 @@ export const people: Person[] = [
         accent: 'var(--c-mail)',
       },
     ],
+  },
+]
+
+/** Henüz yayında olmayan işler. Bağlantı yok — yalnız bilgi veriyor. */
+export type Upcoming = {
+  name: string
+  desc: string
+  icon: LogoName
+  accent: string
+  /** karttaki etiket, ör. "Geliştiriliyor" */
+  status: string
+}
+
+export const upcoming: Upcoming[] = [
+  {
+    name: 'Ezan Vaktim',
+    desc: 'Namaz vakitleri, ezan bildirimi ve widget’lar · Android · reklamsız',
+    icon: 'ezan',
+    accent: 'var(--c-ezan)',
+    status: 'Geliştiriliyor',
   },
 ]

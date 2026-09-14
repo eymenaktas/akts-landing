@@ -7,6 +7,7 @@ import type { LogoName } from '@/data/site'
  * Aktaş Mail : kendi markamız (degrade karo + iki tonlu A)
  * OyunHub    : sitenin favicon'undaki şimşek (blur filtreleri atıldı)
  * n8n        : n8n'in düğüm-grafik markası, marka rengi #ea4b71
+ * Ezan Vaktim: hilâl + yıldız, tek renk glif — satırın accent rengini alır
  * kod/zarf   : tek renk glif — satırın accent rengini alır
  */
 export function LogoDefs() {
@@ -73,6 +74,18 @@ export function LogoDefs() {
         >
           <rect x="6" y="11" width="36" height="26" rx="4" />
           <path d="M7 14 L24 26 L41 14" />
+        </g>
+
+        {/* Ezan Vaktim — hilâl + yıldız, tek renk glif. Hilâl büyük
+            dairenin içinden kaydırılmış küçük dairenin evenodd ile
+            oyulmasıyla çıkıyor; 20 pikselde en ince yeri 7 px kalıyor,
+            bu yüzden okunuyor. */}
+        <g id="i-ezan" fill="currentColor">
+          <path
+            fillRule="evenodd"
+            d="M24 10a14 14 0 1 0 0 28 14 14 0 0 0 0-28zm5 2.5a11.5 11.5 0 1 1 0 23 11.5 11.5 0 0 1 0-23z"
+          />
+          <circle cx="36" cy="14" r="2.6" />
         </g>
       </defs>
     </svg>

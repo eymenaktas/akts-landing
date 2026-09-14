@@ -1,11 +1,14 @@
 import type { CSSProperties } from 'react'
 import { AuroraGL } from '@/components/AuroraGL'
+import { ClickSpark } from '@/components/ClickSpark'
+import { CountUp } from '@/components/CountUp'
 import { Footer } from '@/components/Footer'
 import { LogoDefs } from '@/components/Logos'
 import { PersonSection } from '@/components/PersonSection'
 import { ServiceCard } from '@/components/ServiceCard'
 import { ThemeToggle } from '@/components/ThemeToggle'
-import { people, services } from '@/data/site'
+import { UpcomingCard } from '@/components/UpcomingCard'
+import { people, services, upcoming } from '@/data/site'
 
 function SectionTitle({
   children,
@@ -22,7 +25,7 @@ function SectionTitle({
       style={{ '--d': `${delay}s` } as CSSProperties}
     >
       <h2 className="text-xs font-semibold uppercase tracking-[0.1em] text-dim">{children}</h2>
-      <span className="text-xs tabular-nums text-dim">{count}</span>
+      <CountUp to={count} delay={delay + 0.1} className="text-xs tabular-nums text-dim" />
       <span className="h-px flex-1" style={{ background: 'hsl(var(--hairline))' }} />
     </div>
   )
@@ -32,6 +35,7 @@ export default function App() {
   return (
     <>
       <AuroraGL />
+      <ClickSpark />
       {/* İnce nokta dokusu — düz zemine derinlik veriyor, okunurluğa
           dokunmayacak kadar soluk (%. birkaç). */}
       <div
@@ -88,15 +92,26 @@ export default function App() {
             </div>
           </section>
 
+          <section className="mt-14">
+            <SectionTitle count={upcoming.length} delay={0.35}>
+              Yakında
+            </SectionTitle>
+            <div className="grid gap-4">
+              {upcoming.map((item, i) => (
+                <UpcomingCard key={item.name} item={item} delay={0.41 + i * 0.06} />
+              ))}
+            </div>
+          </section>
+
           {/* Yeni kişi eklemek için src/data/site.ts içindeki `people`
               dizisine bir nesne ekle — burada değişiklik gerekmiyor. */}
           <section className="mt-14">
-            <SectionTitle count={people.length} delay={0.41}>
+            <SectionTitle count={people.length} delay={0.53}>
               Kişiler
             </SectionTitle>
             <div className="grid gap-4">
               {people.map((person, i) => (
-                <PersonSection key={person.name} person={person} delay={0.47 + i * 0.08} />
+                <PersonSection key={person.name} person={person} delay={0.59 + i * 0.08} />
               ))}
             </div>
           </section>
