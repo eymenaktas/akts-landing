@@ -8,3 +8,9 @@ dist
 
 # jeneratör çıktısı — kanonik kopyalar logolar/*.svg
 logolar/cikti/
+
+# efekt çalışması öncesi el yedeği
+yedek/
+
+# tasarım skill taraması — üretilen çıktı, kaynak değil
+skillui/

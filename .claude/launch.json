@@ -1,6 +1,33 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "landing", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev", "--", "--port", "4180", "--strictPort"], "port": 4180 }
+    {
+      "name": "landing",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "4180",
+        "--strictPort"
+      ],
+      "port": 4180
+    },
+    {
+      "name": "cpvp-web",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "/Users/eymen/Desktop/projects/cpvp-web",
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "4321",
+        "--strictPort"
+      ],
+      "port": 4321
+    }
   ]
 }
