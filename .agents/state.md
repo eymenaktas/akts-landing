@@ -1,6 +1,6 @@
 # Durum — akts-landing
 
-Güncelleme: 2026-09-19 | Son araç: claude
+Güncelleme: 2026-09-20 | Son araç: claude
 
 ## Hedef
 
@@ -37,6 +37,11 @@ açık iş kalmadı; sıradaki iş Ezan Vaktim uygulamasında
       **BlankReel eklendi** → `https://blankreel.com` (sitenin kendi işareti,
       koyu karo). `upcoming` boş; "Yakında" bölümü boşken gizleniyor
       (72d4486). Canlıda. Yedek: `/root/akts.tr-yedek-2026-09-19b.tgz`.
+
+- [x] **Ezan karosundaki hilâl düzeltildi** (cd7833e): eski yol iki dairenin
+      evenOdd farkıydı, iç daire dışarı taştığı için sağda ince bir şerit
+      çıkıyordu. Artık kesişim noktalarından geçen gerçek yay yolu. Aynı
+      düzeltme ezan-vaktim deposundaki altı dosyada da yapıldı. Canlıda.
 
 ## Sıradaki adım
 
