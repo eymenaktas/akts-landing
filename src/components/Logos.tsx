@@ -7,7 +7,7 @@ import type { LogoName } from '@/data/site'
  * Aktaş Mail : kendi markamız (degrade karo + iki tonlu A)
  * OyunHub    : sitenin favicon'undaki şimşek (blur filtreleri atıldı)
  * n8n        : n8n'in düğüm-grafik markası, marka rengi #ea4b71
- * Ezan Vaktim: hilâl + yıldız, tek renk glif — satırın accent rengini alır
+ * Ezan Vaktim, StudyTrack: uygulamaların kendi ikonları
  * kod/zarf   : tek renk glif — satırın accent rengini alır
  */
 export function LogoDefs() {
@@ -76,23 +76,31 @@ export function LogoDefs() {
           <path d="M7 14 L24 26 L41 14" />
         </g>
 
-        {/* Ezan Vaktim — hilâl + yıldız, tek renk glif. Hilâl büyük
-            dairenin içinden kaydırılmış küçük dairenin evenodd ile
-            oyulmasıyla çıkıyor; 20 pikselde en ince yeri 7 px kalıyor,
-            bu yüzden okunuyor. */}
-        <g id="i-ezan" fill="currentColor">
-          <path
-            fillRule="evenodd"
-            d="M24 10a14 14 0 1 0 0 28 14 14 0 0 0 0-28zm5 2.5a11.5 11.5 0 1 1 0 23 11.5 11.5 0 0 1 0-23z"
-          />
-          <circle cx="36" cy="14" r="2.6" />
+        {/* Ezan Vaktim — uygulamanın kendi ikonu (koyu yeşil karo, kubbe, iki
+            minare, altın hilâl). Yollar Android ikonundan (108'lik tuval)
+            birebir alındı; karoya %55 ölçekle oturtuldu. */}
+        <g id="i-ezan">
+          <rect x="2" y="2" width="44" height="44" rx="12" fill="#0b3b2e" />
+          <g transform="translate(24 25) scale(.55) translate(-54 -47)">
+            <path fill="#f0ce72" fillRule="evenodd" d="M54,26 m-9.5,0 a9.5,9.5 0 1,0 19,0 a9.5,9.5 0 1,0 -19,0 z M58.2,25.4 m-8.2,0 a8.2,8.2 0 1,1 16.4,0 a8.2,8.2 0 1,1 -16.4,0 z" />
+            <path fill="#f0ce72" d="M53.1,36 h1.8 v6 h-1.8 z" />
+            <path fill="#fff" d="M42,70 C42,60 45,52 54,42 C63,52 66,60 66,70 Z" />
+            <path fill="#fff" d="M40,70 h28 v4 h-28 z" />
+            <path fill="#fff" d="M31.2,46 l1.8,-6 l1.8,6 z M31.4,46 h3.2 v28 h-3.2 z M30.2,51 h5.6 v2.2 h-5.6 z" />
+            <path fill="#fff" d="M73.2,46 l1.8,-6 l1.8,6 z M73.4,46 h3.2 v28 h-3.2 z M72.2,51 h5.6 v2.2 h-5.6 z" />
+            <path fill="#fff" d="M26,74 h56 v4 h-56 z" />
+          </g>
         </g>
-        {/* StudyTrack — uygulamanın kendi işareti: açık kitap ve üstünde
-            onay. Yeni çizim değil, eski logonun tek renk glif hâli. */}
-        <g id="i-study" fill="none" stroke="#4cb572" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M24 17c-5-3.6-11-4.6-17-4v23c6-.6 12 .4 17 4 5-3.6 11-4.6 17-4v-23c-6-.6-12 .4-17 4z" />
-          <path d="M24 17v23" />
-          <path d="M15 24.5l5 4.5 11-12.5" />
+
+        {/* StudyTrack — uygulamanın kendi ikonu (açık kitap + onay). Görsel
+            olduğu için karo zemini ikondaki dairenin rengi; daire karoya
+            karışıyor. */}
+        <clipPath id="c-study">
+          <rect x="2" y="2" width="44" height="44" rx="12" />
+        </clipPath>
+        <g id="i-study">
+          <rect x="2" y="2" width="44" height="44" rx="12" fill="#ccdcdb" />
+          <image href="/assets/studytrack.png" x="-17" y="-16" width="82" height="82" clipPath="url(#c-study)" />
         </g>
       </defs>
     </svg>
