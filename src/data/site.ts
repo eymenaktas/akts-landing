@@ -4,7 +4,7 @@
    `icon` değeri src/components/Logos.tsx içindeki tanımın adı.
    ═══════════════════════════════════════════════════════════════ */
 
-export type LogoName = 'mail' | 'oyun' | 'n8n' | 'kod' | 'zarf' | 'github' | 'ezan'
+export type LogoName = 'mail' | 'oyun' | 'n8n' | 'kod' | 'zarf' | 'github' | 'ezan' | 'study'
 
 export type Link = {
   name: string
@@ -41,6 +41,13 @@ export const services: Link[] = [
     href: 'https://oyun.akts.tr',
     icon: 'oyun',
     accent: 'var(--c-oyun)',
+  },
+  {
+    name: 'StudyTrack',
+    desc: 'Pomodoro, günlük hedef ve seri · widget ve Galaxy Watch · Android',
+    href: 'https://studytrack.tr',
+    icon: 'study',
+    accent: 'var(--c-study)',
   },
   {
     name: 'n8n',

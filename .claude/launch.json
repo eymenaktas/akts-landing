@@ -28,6 +28,18 @@
         "--strictPort"
       ],
       "port": 4321
+    },
+    {
+      "name": "studytrack-web",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4190",
+        "--directory",
+        "/Users/eymen/Desktop/projects/studytrack/web-dist"
+      ],
+      "port": 4190
     }
   ]
 }

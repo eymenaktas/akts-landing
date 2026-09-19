@@ -87,6 +87,13 @@ export function LogoDefs() {
           />
           <circle cx="36" cy="14" r="2.6" />
         </g>
+        {/* StudyTrack — uygulamanın kendi işareti: açık kitap ve üstünde
+            onay. Yeni çizim değil, eski logonun tek renk glif hâli. */}
+        <g id="i-study" fill="none" stroke="#4cb572" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M24 17c-5-3.6-11-4.6-17-4v23c6-.6 12 .4 17 4 5-3.6 11-4.6 17-4v-23c-6-.6-12 .4-17 4z" />
+          <path d="M24 17v23" />
+          <path d="M15 24.5l5 4.5 11-12.5" />
+        </g>
       </defs>
     </svg>
   )
