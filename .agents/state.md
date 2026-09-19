@@ -33,13 +33,22 @@ açık iş kalmadı; sıradaki iş Ezan Vaktim uygulamasında
       2 Eylül derlemesiydi; Kâhya kaldırma ve Ezan kartı da ilk kez
       canlıya çıktı. Yedek: `/root/akts.tr-yedek-2026-09-19.tgz`.
 
+- [x] **Ezan Vaktim `services`'e taşındı** → `https://ezan.akts.tr`,
+      **BlankReel eklendi** → `https://blankreel.com` (sitenin kendi işareti,
+      koyu karo). `upcoming` boş; "Yakında" bölümü boşken gizleniyor
+      (72d4486). Canlıda. Yedek: `/root/akts.tr-yedek-2026-09-19b.tgz`.
+
 ## Sıradaki adım
 
-Landing'de iş yok. Ezan Vaktim yayına yaklaşınca `upcoming` kartının
-`status` alanı güncellenecek veya kart `services`'e taşınacak
-(o zaman `href: 'https://ezan.akts.tr'` eklenir).
+Landing'de iş yok. Yeni bir "yakında" işi olursa `upcoming` dizisine eklemek
+yeter, bölüm kendiliğinden görünür.
 
 ## Bilinen tuzaklar
+
+- **Başka bir oturum da bu depoda çalışıyor** (OyunHub: `src/data/legal.ts`,
+  `.claude/launch.json`'da `oyunhub*` girdileri, commit'lenmemiş). Onları
+  commit'leme; canlıya çıkarken çalışma ağacından değil, commit'ten
+  `git worktree add --detach` ile derle (node_modules'u symlink'le).
 
 - Lint yapılandırması yok; `npm run lint` diye bir script arama.
 - Dev sunucusu `.claude/launch.json`'da **4180** portunda, 5173'te değil.
