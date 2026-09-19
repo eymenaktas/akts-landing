@@ -1,6 +1,6 @@
 # Durum — akts-landing
 
-Güncelleme: 2026-09-14 20:05 | Son araç: claude
+Güncelleme: 2026-09-19 | Son araç: claude
 
 ## Hedef
 
@@ -23,6 +23,15 @@ açık iş kalmadı; sıradaki iş Ezan Vaktim uygulamasında
       Kart bilerek bağlantı değil (site yok, yalnız bilgi).
 - [x] Tip kontrolü, secret taraması ve üç viewport görsel sensör temiz
 - [x] Dal push edildi: `origin/gizlilik-footer-404`
+
+- [x] **StudyTrack kartı** (6105b9f): `services`'te, `https://studytrack.tr`'ye
+      gidiyor. Glif eski StudyTrack logosunun (kitap + onay) tek renk hâli,
+      renk `#4cb572` doğrudan glifte (diğer glifler gibi; currentColor
+      kartta siyah kalıyordu).
+- [x] **Canlıya çıktı** (2026-09-19): `dist/` → `/var/www/akts.tr/`
+      (`ezan/`, `studytrack/` dizinlerine dokunulmadan). Önceki canlı
+      2 Eylül derlemesiydi; Kâhya kaldırma ve Ezan kartı da ilk kez
+      canlıya çıktı. Yedek: `/root/akts.tr-yedek-2026-09-19.tgz`.
 
 ## Sıradaki adım
 
@@ -48,4 +57,5 @@ Landing'de iş yok. Ezan Vaktim yayına yaklaşınca `upcoming` kartının
   Bunun yerine `harness visual` — paketlenmiş Chromium ile çalışıyor.
 - Ölçekli SVG'de degradeler `objectBoundingBox` (varsayılan) kalmalı;
   maske ise `userSpaceOnUse` olmalı.
-- `ssh akts` auto mode sınıflandırıcısı tarafından engelleniyor.
+- Canlıya çıkış elle: `npm run build` sonra `rsync -a dist/ akts:/var/www/akts.tr/`
+  (**`--delete` kullanma**: `ezan/` ve `studytrack/` APK dizinleri orada).
