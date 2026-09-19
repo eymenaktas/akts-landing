@@ -51,7 +51,7 @@ export const services: Link[] = [
   },
   {
     name: 'Ezan Vaktim',
-    desc: 'Namaz vakitleri, Cuma, takip ve widget’lar · Galaxy Watch · Android',
+    desc: 'Namaz vakitleri, kıble, zikirmatik, takip ve widget’lar · Galaxy Watch · Android',
     href: 'https://ezan.akts.tr',
     icon: 'ezan',
     accent: 'var(--c-ezan)',

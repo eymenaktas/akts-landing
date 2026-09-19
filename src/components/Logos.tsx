@@ -82,7 +82,7 @@ export function LogoDefs() {
         <g id="i-ezan">
           <rect x="2" y="2" width="44" height="44" rx="12" fill="#0b3b2e" />
           <g transform="translate(24 25) scale(.55) translate(-54 -47)">
-            <path fill="#f0ce72" fillRule="evenodd" d="M54,26 m-9.5,0 a9.5,9.5 0 1,0 19,0 a9.5,9.5 0 1,0 -19,0 z M58.2,25.4 m-8.2,0 a8.2,8.2 0 1,1 16.4,0 a8.2,8.2 0 1,1 -16.4,0 z" />
+            <path fill="#f0ce72" d="M61.56,31.75 A9.5,9.5 0 1,1 56.11,16.74 A8,8 0 1,0 61.56,31.75 Z" />
             <path fill="#f0ce72" d="M53.1,36 h1.8 v6 h-1.8 z" />
             <path fill="#fff" d="M42,70 C42,60 45,52 54,42 C63,52 66,60 66,70 Z" />
             <path fill="#fff" d="M40,70 h28 v4 h-28 z" />
