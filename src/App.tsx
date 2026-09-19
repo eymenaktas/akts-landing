@@ -92,16 +92,18 @@ export default function App() {
             </div>
           </section>
 
-          <section className="mt-14">
-            <SectionTitle count={upcoming.length} delay={0.35}>
-              Yakında
-            </SectionTitle>
-            <div className="grid gap-4">
-              {upcoming.map((item, i) => (
-                <UpcomingCard key={item.name} item={item} delay={0.41 + i * 0.06} />
-              ))}
-            </div>
-          </section>
+          {upcoming.length > 0 && (
+            <section className="mt-14">
+              <SectionTitle count={upcoming.length} delay={0.35}>
+                Yakında
+              </SectionTitle>
+              <div className="grid gap-4">
+                {upcoming.map((item, i) => (
+                  <UpcomingCard key={item.name} item={item} delay={0.41 + i * 0.06} />
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* Yeni kişi eklemek için src/data/site.ts içindeki `people`
               dizisine bir nesne ekle — burada değişiklik gerekmiyor. */}

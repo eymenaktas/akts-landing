@@ -92,6 +92,18 @@ export function LogoDefs() {
           </g>
         </g>
 
+        {/* BlankReel — sitenin kendi işareti; karo koyu, çünkü beyaz
+            karo açık temada kartın zeminine karışıyordu. */}
+        <g id="i-blankreel">
+          <rect x="2" y="2" width="44" height="44" rx="12" fill="#0a0a0a" />
+          <path
+            transform="translate(10.35 11.95) scale(.1096)"
+            fill="#fff"
+            fillRule="evenodd"
+            d="M12 2 L21 2 L107 25 L109 27 L109 52 L111 54 L182 36 L231 21 L237 21 L243 24 L247 32 L247 205 L245 211 L236 217 L147 217 L144 215 L144 188 L140 183 L90 199 L27 216 L15 218 L5 213 L2 205 L2 15 L4 8 L11 3 Z M85 51 L92 53 L191 110 L196 113 L197 117 L94 180 L85 183 L83 181 L84 52 Z"
+          />
+        </g>
+
         {/* StudyTrack — uygulamanın kendi ikonu (açık kitap + onay). Görsel
             olduğu için karo zemini ikondaki dairenin rengi; daire karoya
             karışıyor. */}

@@ -4,7 +4,7 @@
    `icon` değeri src/components/Logos.tsx içindeki tanımın adı.
    ═══════════════════════════════════════════════════════════════ */
 
-export type LogoName = 'mail' | 'oyun' | 'n8n' | 'kod' | 'zarf' | 'github' | 'ezan' | 'study'
+export type LogoName = 'mail' | 'oyun' | 'n8n' | 'kod' | 'zarf' | 'github' | 'ezan' | 'study' | 'blankreel'
 
 export type Link = {
   name: string
@@ -37,7 +37,7 @@ export const services: Link[] = [
   },
   {
     name: 'OyunHub',
-    desc: '172 oyunluk Türkçe oyun portalı',
+    desc: '40 oyunluk Türkçe oyun portalı',
     href: 'https://oyun.akts.tr',
     icon: 'oyun',
     accent: 'var(--c-oyun)',
@@ -48,6 +48,20 @@ export const services: Link[] = [
     href: 'https://studytrack.tr',
     icon: 'study',
     accent: 'var(--c-study)',
+  },
+  {
+    name: 'Ezan Vaktim',
+    desc: 'Namaz vakitleri, Cuma, takip ve widget’lar · Galaxy Watch · Android',
+    href: 'https://ezan.akts.tr',
+    icon: 'ezan',
+    accent: 'var(--c-ezan)',
+  },
+  {
+    name: 'BlankReel',
+    desc: 'Kodla kısa video üretimi · TikTok, Shorts ve Reels için API',
+    href: 'https://blankreel.com',
+    icon: 'blankreel',
+    accent: 'var(--c-blankreel)',
   },
   {
     name: 'n8n',
@@ -100,12 +114,4 @@ export type Upcoming = {
   status: string
 }
 
-export const upcoming: Upcoming[] = [
-  {
-    name: 'Ezan Vaktim',
-    desc: 'Namaz vakitleri, ezan bildirimi ve widget’lar · Android · reklamsız',
-    icon: 'ezan',
-    accent: 'var(--c-ezan)',
-    status: 'Geliştiriliyor',
-  },
-]
+export const upcoming: Upcoming[] = []
