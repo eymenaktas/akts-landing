@@ -1,6 +1,6 @@
 # Durum — akts-landing
 
-Güncelleme: 2026-09-20 | Son araç: claude
+Güncelleme: 2026-09-23 | Son araç: claude
 
 ## Hedef
 
@@ -49,6 +49,10 @@ Landing'de iş yok. Yeni bir "yakında" işi olursa `upcoming` dizisine eklemek
 yeter, bölüm kendiliğinden görünür.
 
 ## Bilinen tuzaklar
+
+- **Commit kimliği `eymen@akts.tr`.** 2026-09-23'te bu depo dahil 9 depoda
+  `gizliman2345@gmail.com` (GitHub'da `nemyontop`) geçmişten silindi ve
+  force-push edildi; eski SHA'lar (ör. 5039d04) artık yok.
 
 - **Başka bir oturum da bu depoda çalışıyor** (OyunHub: `src/data/legal.ts`,
   `.claude/launch.json`'da `oyunhub*` girdileri, commit'lenmemiş). Onları
