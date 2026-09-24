@@ -58,12 +58,23 @@ açık iş kalmadı; sıradaki iş Ezan Vaktim uygulamasında
 - [x] **OyunHub gizlilik metni** (61f95fc): oyun sayaçları eklendi, Internet Archive
       çıkarıldı. Canlıda; yedek `/root/akts.tr-yedek-2026-09-24b.tgz`.
 
+- [x] **maskepacks.com paket hatası** (2026-09-24): pm2 `maske-paket` süreci eski
+      `MASKE_DATA=/var/www/akts.tr/maske/data` ile çalışıyordu; doğru yolla yeniden başlatıldı, `pm2 save`.
+      Skin'ler `PlayerSkinInitEvent` ile atanıyor (8e7231f, maske-pack).
+
 ## Sıradaki adım
 
 Landing'de iş yok. Yeni bir "yakında" işi olursa `upcoming` dizisine eklemek
 yeter, bölüm kendiliğinden görünür.
 
 ## Bilinen tuzaklar
+
+- **`pm2 update` çalıştırma**: süreç listesini boşalttı, `pm2 resurrect` ile döndü.
+  Bir sürecin ortamı için `pm2 env <id>` yeter.
+- Minestom girişte skin'i `PlayerSkinInitEvent` ile yeniden yazar; yapılandırma
+  olayında `setSkin` işe yaramaz.
+- Gerçek 1:1 önizleme (MaskeKamera) yarım: `maske-pack/kamera/` commit'lenmedi,
+  istemci `/srv/maske-kamera`'da kurulu, Xvfb :77'de çalışıyor.
 
 - **Commit kimliği `eymen@akts.tr`.** 2026-09-23'te bu depo dahil 9 depoda
   `gizliman2345@gmail.com` (GitHub'da `nemyontop`) geçmişten silindi ve
