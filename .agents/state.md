@@ -70,6 +70,9 @@ açık iş kalmadı; sıradaki iş Ezan Vaktim uygulamasında
   - diyalog 3 sayfa, eşya başına boy seçimi;
   - kamera sırası öncelikli: `arka=1` ile ön çekim.
 
+- [x] **Maske Packs servisi + "aka MaskeDev"** (a660c4c): `Person.aka`, `i-maske` glifi,
+      `--c-maske`. Canlıda; yedek `/root/akts.tr-yedek-2026-09-25.tgz`.
+
 ## Sıradaki adım
 
 Landing'de iş yok. Yeni bir "yakında" işi olursa `upcoming` dizisine eklemek
