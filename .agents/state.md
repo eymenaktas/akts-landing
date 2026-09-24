@@ -1,6 +1,6 @@
 # Durum — akts-landing
 
-Güncelleme: 2026-09-23 | Son araç: claude
+Güncelleme: 2026-09-24 | Son araç: claude
 
 ## Hedef
 
@@ -55,6 +55,9 @@ açık iş kalmadı; sıradaki iş Ezan Vaktim uygulamasında
       `kahya.akts.tr` bloğu `akts.tr` ayarından çıkarıldı, `cpvp-discord` pm2'de durduruldu.
       Geri açmak için yedek: `/root/kapatilan-2026-09-24/`.
 
+- [x] **OyunHub gizlilik metni** (61f95fc): oyun sayaçları eklendi, Internet Archive
+      çıkarıldı. Canlıda; yedek `/root/akts.tr-yedek-2026-09-24b.tgz`.
+
 ## Sıradaki adım
 
 Landing'de iş yok. Yeni bir "yakında" işi olursa `upcoming` dizisine eklemek
@@ -66,8 +69,7 @@ yeter, bölüm kendiliğinden görünür.
   `gizliman2345@gmail.com` (GitHub'da `nemyontop`) geçmişten silindi ve
   force-push edildi; eski SHA'lar (ör. 5039d04) artık yok.
 
-- **Başka bir oturum da bu depoda çalışıyor** (OyunHub: `src/data/legal.ts`,
-  `.claude/launch.json`'da `oyunhub*` girdileri, commit'lenmemiş). Onları
+- `.claude/launch.json` önizleme girdileri (oyunhub, maske-site, portfolyo…) yerel;
   commit'leme; canlıya çıkarken çalışma ağacından değil, commit'ten
   `git worktree add --detach` ile derle (node_modules'u symlink'le).
 
