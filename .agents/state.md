@@ -43,9 +43,9 @@ açık iş kalmadı; sıradaki iş Ezan Vaktim uygulamasında
       çıkıyordu. Artık kesişim noktalarından geçen gerçek yay yolu. Aynı
       düzeltme ezan-vaktim deposundaki altı dosyada da yapıldı. Canlıda.
 
-- [x] **akts.tr/maske/** (2026-09-24): Maske CPvP paket kurucusu bu alanda
-      yayında ama kaynağı bu depoda değil: `~/Desktop/projects/maske-pack`.
-      Landing derlemesini çıkarırken `maske/` klasörüne dokunma.
+- [x] **Maske paket kurucusu maskepacks.com'a taşındı** (2026-09-24): akts.tr/maske nginx'te
+      301 ile yönleniyor (`/etc/nginx/sites-available/akts.tr`), `maske/` klasörü kaldırıldı.
+      Kaynak `~/Desktop/projects/maske-pack`.
 
 - [x] **Paylaşım görselleri** (2026-09-24): `scripts/og-image.mjs` (harness Playwright
       ile 1200x630). akts.tr `public/og.png`; aynı üreticiyle maske, eymen (websitesi),
