@@ -62,6 +62,14 @@ açık iş kalmadı; sıradaki iş Ezan Vaktim uygulamasında
       `MASKE_DATA=/var/www/akts.tr/maske/data` ile çalışıyordu; doğru yolla yeniden başlatıldı, `pm2 save`.
       Skin'ler `PlayerSkinInitEvent` ile atanıyor (8e7231f, maske-pack).
 
+- [x] **Maske test sunucusu, 2026-09-24 akşamı** (maske-pack fd6b07e'ye kadar):
+  - kalkan hep küçük, dolu/hollow seçimi kalıyor;
+  - ağlayan obsidyen temaya boyanıyor; anchor üstü opak; sunucu paketinde anchor uğultusu ve ateş sesi yok;
+  - müzik köşesi: jukebox, disklerin ek paketi `/muzik`;
+  - bayraklı 10 dil: `Dil.java`, `sunucu/ceviri.py` → `resources/dil/*.json`, `/language`;
+  - diyalog 3 sayfa, eşya başına boy seçimi;
+  - kamera sırası öncelikli: `arka=1` ile ön çekim.
+
 ## Sıradaki adım
 
 Landing'de iş yok. Yeni bir "yakında" işi olursa `upcoming` dizisine eklemek
@@ -76,6 +84,8 @@ yeter, bölüm kendiliğinden görünür.
 - **Önizleme kareleri gerçek istemciden** (maske-pack 32b852c): `maske-kare` servisi (8792),
   gizli ad `/etc/maske-kamera.env`, kareler `/var/www/maske-kare/<kod>/` (bir kez çekilir, kalıcı).
   Paket içeriği değişirse eski kareler kalır: `rm -rf /var/www/maske-kare/*` + `kamera/hazirla.sh`.
+- maske sunucusuna yeni metin eklenince `sunucu/ceviri.py` tablosuna 9 dilde satır ekle, çalıştır.
+- `systemctl restart maske-kare` sırayı siler; sonra `systemd-run --unit=maske-hazirla --collect /srv/maske-kamera/hazirla.sh`.
 - ssh komutunda `pkill -f "desen"` ssh kabuğunu da öldürür; `pkill -f "[-]-desen"` yaz.
 
 - **Commit kimliği `eymen@akts.tr`.** 2026-09-23'te bu depo dahil 9 depoda
