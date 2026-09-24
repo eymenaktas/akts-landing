@@ -43,6 +43,18 @@ açık iş kalmadı; sıradaki iş Ezan Vaktim uygulamasında
       çıkıyordu. Artık kesişim noktalarından geçen gerçek yay yolu. Aynı
       düzeltme ezan-vaktim deposundaki altı dosyada da yapıldı. Canlıda.
 
+- [x] **akts.tr/maske/** (2026-09-24): Maske CPvP paket kurucusu bu alanda
+      yayında ama kaynağı bu depoda değil: `~/Desktop/projects/maske-pack`.
+      Landing derlemesini çıkarırken `maske/` klasörüne dokunma.
+
+- [x] **Paylaşım görselleri** (2026-09-24): `scripts/og-image.mjs` (harness Playwright
+      ile 1200x630). akts.tr `public/og.png`; aynı üreticiyle maske, eymen (websitesi),
+      mail (aktas-mail) ve oyun (web2) görselleri. `theme-color` Discord şeridinin rengi.
+      Canlıya çıktı; yedek `/root/akts.tr-yedek-2026-09-24.tgz`.
+- [x] **cpvp.io ve Kâhya kapatıldı** (2026-09-24): nginx bağlantıları kaldırıldı,
+      `kahya.akts.tr` bloğu `akts.tr` ayarından çıkarıldı, `cpvp-discord` pm2'de durduruldu.
+      Geri açmak için yedek: `/root/kapatilan-2026-09-24/`.
+
 ## Sıradaki adım
 
 Landing'de iş yok. Yeni bir "yakında" işi olursa `upcoming` dizisine eklemek
@@ -76,4 +88,6 @@ yeter, bölüm kendiliğinden görünür.
 - Ölçekli SVG'de degradeler `objectBoundingBox` (varsayılan) kalmalı;
   maske ise `userSpaceOnUse` olmalı.
 - Canlıya çıkış elle: `npm run build` sonra `rsync -a dist/ akts:/var/www/akts.tr/`
-  (**`--delete` kullanma**: `ezan/` ve `studytrack/` APK dizinleri orada).
+  (**`--delete` kullanma**: `ezan/`, `studytrack/` ve `maske/` dizinleri orada).
+- `.claude/launch.json`'daki `maske-site` girdisi maske-pack önizlemesi içindir;
+  landing commit'ine girmesin.
