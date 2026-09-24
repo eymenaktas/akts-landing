@@ -4,7 +4,7 @@
    `icon` değeri src/components/Logos.tsx içindeki tanımın adı.
    ═══════════════════════════════════════════════════════════════ */
 
-export type LogoName = 'mail' | 'oyun' | 'n8n' | 'kod' | 'zarf' | 'github' | 'ezan' | 'study' | 'blankreel'
+export type LogoName = 'mail' | 'oyun' | 'n8n' | 'kod' | 'zarf' | 'github' | 'ezan' | 'study' | 'blankreel' | 'maske'
 
 export type Link = {
   name: string
@@ -23,6 +23,8 @@ export type Person = {
   /** yoksa baş harfler gösterilir */
   avatar?: string
   initials: string
+  /** adın hemen altında: oyun içi takma ad */
+  aka?: string
   links: Link[]
 }
 
@@ -64,6 +66,13 @@ export const services: Link[] = [
     accent: 'var(--c-blankreel)',
   },
   {
+    name: 'Maske Packs',
+    desc: 'Minecraft CPvP paket kurucusu · 1.20 – 26.3 · test.maskepacks.com',
+    href: 'https://maskepacks.com',
+    icon: 'maske',
+    accent: 'var(--c-maske)',
+  },
+  {
     name: 'n8n',
     desc: 'İş akışı otomasyonu · giriş gerekir',
     href: 'https://n8n.akts.tr',
@@ -78,6 +87,7 @@ export const people: Person[] = [
     role: 'Minecraft ekosistemi · makine öğrenmesi',
     avatar: '/assets/profile.jpg',
     initials: 'EA',
+    aka: 'MaskeDev',
     links: [
       {
         name: 'Portfolyo',

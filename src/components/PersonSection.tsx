@@ -46,6 +46,7 @@ export function PersonSection({ person, delay }: { person: Person; delay: number
           <Avatar person={person} />
           <div className="min-w-0">
             <h3 className="text-lg font-semibold tracking-[-0.03em]">{person.name}</h3>
+            {person.aka && <p className="text-xs font-medium text-muted-foreground">aka {person.aka}</p>}
             <p className="text-sm leading-snug text-muted-foreground">{person.role}</p>
           </div>
         </div>
