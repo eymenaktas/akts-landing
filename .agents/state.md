@@ -73,8 +73,10 @@ yeter, bölüm kendiliğinden görünür.
   Bir sürecin ortamı için `pm2 env <id>` yeter.
 - Minestom girişte skin'i `PlayerSkinInitEvent` ile yeniden yazar; yapılandırma
   olayında `setSkin` işe yaramaz.
-- Gerçek 1:1 önizleme (MaskeKamera) yarım: `maske-pack/kamera/` commit'lenmedi,
-  istemci `/srv/maske-kamera`'da kurulu, Xvfb :77'de çalışıyor.
+- **Önizleme kareleri gerçek istemciden** (maske-pack 32b852c): `maske-kare` servisi (8792),
+  gizli ad `/etc/maske-kamera.env`, kareler `/var/www/maske-kare/<kod>/` (bir kez çekilir, kalıcı).
+  Paket içeriği değişirse eski kareler kalır: `rm -rf /var/www/maske-kare/*` + `kamera/hazirla.sh`.
+- ssh komutunda `pkill -f "desen"` ssh kabuğunu da öldürür; `pkill -f "[-]-desen"` yaz.
 
 - **Commit kimliği `eymen@akts.tr`.** 2026-09-23'te bu depo dahil 9 depoda
   `gizliman2345@gmail.com` (GitHub'da `nemyontop`) geçmişten silindi ve
