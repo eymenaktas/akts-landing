@@ -106,6 +106,16 @@ export const privacySections: LegalSection[] = [
     ],
   },
   {
+    heading: 'OyunHub oyun sayaçları',
+    body: [
+      'OyunHub ayrıca oyun başına iki anonim sayı tutar: kaç kez açıldığı ' +
+        've toplam kaç saniye oynandığı. Bunun için sunucuya yalnızca oyunun ' +
+        'adı ve saniye sayısı gider; kim olduğun kaydedilmez. IP adresi, ' +
+        'sayacın yenilemeyle şişirilmesini önlemek için 30 saniye bellekte ' +
+        'tutulur ve diske yazılmaz.',
+    ],
+  },
+  {
     heading: 'Üçüncü taraflar',
     body: [
       'Sayfalar mümkün olduğunca kendi sunucumuzdan servis edilir. ' +
@@ -115,7 +125,6 @@ export const privacySections: LegalSection[] = [
     bullets: [
       'Cloudflare — akts.tr ve alt alan adlarının DNS’i ve trafiği Cloudflare üzerinden geçer (proxy açık). Yani siteye gelen her istek önce Cloudflare’ın sunucularına, sonra bize ulaşır. Cloudflare bu sırada IP adresini ve istek bilgisini işler ve bunu yurt dışındaki sunucularında yapabilir. Amaç güvenlik ve hız; Cloudflare’ın kendi gizlilik politikası geçerlidir.',
       'Google Fonts (fonts.googleapis.com / fonts.gstatic.com) — yazı tipleri için, portfolyo sayfasında',
-      'Internet Archive — OyunHub’daki retro oyunlar onun tarayıcı içi emülatöründen gömülüdür; bir retro oyunu açtığında istek oraya gider ve o oyun için Internet Archive’ın kendi gizlilik politikası geçerlidir',
       'Bir dış bağlantıya tıkladığında (GitHub, Discord vb.) artık o sitenin politikası geçerlidir',
     ],
   },
