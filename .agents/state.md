@@ -1,6 +1,6 @@
 # Durum — akts-landing
 
-Güncelleme: 2026-09-24 | Son araç: claude
+Güncelleme: 2026-09-26 | Son araç: claude
 
 ## Hedef
 
@@ -77,12 +77,27 @@ açık iş kalmadı; sıradaki iş Ezan Vaktim uygulamasında
       (`/etc/nginx/sites-available/cpvp-yonlendirme`), `cpvp-web`/`cpvp-discord` pm2'den
       silindi, `launch.json`'dan `cpvp-web` çıktı. cpvp için iş yapma.
 
+- [x] **StudyTrack yeniden tasarım** (2026-09-25): uygulama ana/çalışma/analiz ekranları (studytrack b06c84d),
+      Play görselleri `store/play/magaza`, yeni site `studytrack/site` (c7d64a0) canlıda
+      (yedek `/root/studytrack-landing-yedek-2026-09-25.tgz`), saat teması (studytrack-android).
+      Eski Figma kaynağı `~/Desktop/projects/studytrack-src/landing` artık kullanılmıyor.
+
+- [x] **Play Console (2026-09-26):** StudyTrack mağaza görselleri yenilendi, reklam kimliği beyanı. MehtApp:
+      gizlilik, reklam, reklam kimliği, devlet, finans, sağlık, giriş, hedef kitle (16+), veri güvenliği (veri yok),
+      kategori Yaşam Tarzı, iletişim, mağaza sayfası (store/play), dahili test taslağı (versionCode 9).
+      Yükleme anahtarları `~/Desktop/projects/_imza-anahtarlari/` (git dışı, yedeklenmeli).
+
 ## Sıradaki adım
 
-Landing'de iş yok. Yeni bir "yakında" işi olursa `upcoming` dizisine eklemek
+Play: MehtApp içerik derecelendirmesi (IARC koşulları, Eymen onayı), 12 test kullanıcısı e-postası, kapalı test; StudyTrack 48 MB AAB (`studytrack/android/app/build/outputs/bundle/release/app-release.aab`) Eymen elle yükleyecek. Landing'de iş yok. Yeni bir "yakında" işi olursa `upcoming` dizisine eklemek
 yeter, bölüm kendiliğinden görünür.
 
 ## Bilinen tuzaklar
+
+- Play Console görsel paneli: alanın "Add assets"ı → panelde "Select button" (JS click) → aria-label="Add" düğmesi. Sürükle-bırak çalışmıyor. Chrome eklentisi dosya yükleme sınırı 10 MB.
+- Play formlarında JS ile value atamak kaydedilmiyor; alanı tıklayıp klavyeyle yaz. Kaydet düğmesi koordinatla (1245,884) tıklanınca çalışıyor.
+
+- studytrack-android gradle için `JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home` gerekli; yoksa sessizce derlemez.
 
 - **`pm2 update` çalıştırma**: süreç listesini boşalttı, `pm2 resurrect` ile döndü.
   Bir sürecin ortamı için `pm2 env <id>` yeter.
