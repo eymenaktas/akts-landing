@@ -73,6 +73,10 @@ açık iş kalmadı; sıradaki iş Ezan Vaktim uygulamasında
 - [x] **Maske Packs servisi + "aka MaskeDev"** (a660c4c): `Person.aka`, `i-maske` glifi,
       `--c-maske`. Canlıda; yedek `/root/akts.tr-yedek-2026-09-25.tgz`.
 
+- [x] **cpvp.io bitti** (2026-09-25): cpvp.io/admin → 301 maskepacks.com
+      (`/etc/nginx/sites-available/cpvp-yonlendirme`), `cpvp-web`/`cpvp-discord` pm2'den
+      silindi, `launch.json`'dan `cpvp-web` çıktı. cpvp için iş yapma.
+
 ## Sıradaki adım
 
 Landing'de iş yok. Yeni bir "yakında" işi olursa `upcoming` dizisine eklemek
