@@ -2,13 +2,14 @@ import type { CSSProperties } from 'react'
 import { AuroraGL } from '@/components/AuroraGL'
 import { ClickSpark } from '@/components/ClickSpark'
 import { CountUp } from '@/components/CountUp'
+import { AppShowcase } from '@/components/AppShowcase'
 import { Footer } from '@/components/Footer'
 import { LogoDefs } from '@/components/Logos'
 import { PersonSection } from '@/components/PersonSection'
 import { ServiceCard } from '@/components/ServiceCard'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { UpcomingCard } from '@/components/UpcomingCard'
-import { people, services, upcoming } from '@/data/site'
+import { apps, people, services, upcoming } from '@/data/site'
 
 function SectionTitle({
   children,
@@ -54,36 +55,44 @@ export default function App() {
             href="/"
             className="group flex items-center gap-2 text-[15px] font-semibold tracking-[-0.02em] text-muted-foreground transition-colors duration-300 hover:text-foreground"
           >
-            <span
-              className="h-1.5 w-1.5 rounded-full motion-safe:animate-breathe"
-              style={{ background: 'var(--c-mailapp)', animationDuration: '7s' }}
-              aria-hidden="true"
-            />
-            akts.tr
+            <img src="/brand/akts-studio.svg" alt="" className="h-6 w-6 rounded-[6px]" />
+            Akts Studio
           </a>
           <ThemeToggle />
         </header>
 
         <main className="my-auto flex-1 pb-10 pt-10 sm:pt-16">
           <h1
-            className="anim max-w-[16ch] text-[clamp(2.25rem,7.5vw,4rem)] font-semibold leading-[1.04] tracking-[-0.045em]"
+            className="anim max-w-[18ch] text-[clamp(2.25rem,7.5vw,4rem)] font-semibold leading-[1.04] tracking-[-0.045em]"
             style={{ '--d': '.02s' } as CSSProperties}
           >
-            akts.tr'ye{' '}
+            Uygulamalar, siteler{' '}
             <span className="bg-gradient-to-br from-foreground to-muted-foreground bg-clip-text text-transparent">
-              hoş geldiniz
+              ve servisler.
             </span>
           </h1>
           <p
-            className="anim mt-5 max-w-[48ch] text-[clamp(1rem,2vw,1.15rem)] leading-relaxed text-muted-foreground"
+            className="anim mt-5 max-w-[50ch] text-[clamp(1rem,2vw,1.15rem)] leading-relaxed text-muted-foreground"
             style={{ '--d': '.09s' } as CSSProperties}
           >
-            Bu alan adı altındaki tüm siteler ve servisler aşağıda.
+            Akts Studio'nun Android uygulamaları, web siteleri ve kendi sunucusunda çalışan
+            servisleri. Hepsi akts.tr altında.
           </p>
 
           <section className="mt-14">
+            <SectionTitle count={apps.length} delay={0.13}>
+              Uygulamalar
+            </SectionTitle>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {apps.map((app, i) => (
+                <AppShowcase key={app.href} app={app} delay={0.17 + i * 0.06} />
+              ))}
+            </div>
+          </section>
+
+          <section className="mt-14">
             <SectionTitle count={services.length} delay={0.17}>
-              Genel
+              Siteler ve servisler
             </SectionTitle>
             <div className="grid gap-4 sm:grid-cols-2">
               {services.map((item, i) => (

@@ -34,7 +34,7 @@
  * Sayfanın geri kalanındaki `.anim` kullanımına DOKUNULMADI — o
  * sitenin mevcut tasarım kararı ve içeriği hukuki değil.
  */
-import { people, services } from '@/data/site'
+import { apps, people, services } from '@/data/site'
 
 type FooterLink = { title: string; href: string; external?: boolean }
 type FooterColumn = { label: string; links: FooterLink[] }
@@ -42,7 +42,7 @@ type FooterColumn = { label: string; links: FooterLink[] }
 const columns: FooterColumn[] = [
   {
     label: 'Servisler',
-    links: services.map((s) => ({ title: s.name, href: s.href, external: true })),
+    links: [...apps, ...services].map((s) => ({ title: s.name, href: s.href, external: true })),
   },
   {
     // Kişi bölümündeki bağlantılar — şu an tek kişi var, dizi

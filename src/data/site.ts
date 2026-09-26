@@ -28,6 +28,42 @@ export type Person = {
   links: Link[]
 }
 
+export type App = {
+  name: string
+  tagline: string
+  desc: string
+  href: string
+  icon: LogoName
+  /** ekran görüntüsü, public/shots altında */
+  shot: string
+  /** vitrin panelinin zemini: uygulamanın kendi rengi */
+  tint: string
+  tags: string[]
+}
+
+export const apps: App[] = [
+  {
+    name: 'MehtApp',
+    tagline: 'Ezan vakti ve namaz takibi',
+    desc: 'Diyanet takvimiyle aynı vakitler, kilit ekranında ezan uyarısı, seri ve kaza takibi.',
+    href: 'https://ezan.akts.tr',
+    icon: 'ezan',
+    shot: '/shots/mehtapp.jpg',
+    tint: 'radial-gradient(120% 90% at 50% 0%, #15523f, #0b3b2e 55%, #062419)',
+    tags: ['Android', 'Galaxy Watch', 'Widget'],
+  },
+  {
+    name: 'StudyTrack',
+    tagline: 'Ders çalışma takibi',
+    desc: 'Pomodoro zamanlayıcı, günlük hedef, seri ve rozetler; haftalık ve ders bazlı analiz.',
+    href: 'https://studytrack.tr',
+    icon: 'study',
+    shot: '/shots/studytrack.jpg',
+    tint: 'radial-gradient(120% 90% at 50% 0%, #e3efe7, #cde0d4 60%, #a9ccb7)',
+    tags: ['Android', 'Wear OS', 'Web'],
+  },
+]
+
 export const services: Link[] = [
   {
     name: 'Aktaş Mail',
@@ -43,20 +79,6 @@ export const services: Link[] = [
     href: 'https://oyun.akts.tr',
     icon: 'oyun',
     accent: 'var(--c-oyun)',
-  },
-  {
-    name: 'StudyTrack',
-    desc: 'Pomodoro, günlük hedef ve seri · widget ve Galaxy Watch · Android',
-    href: 'https://studytrack.tr',
-    icon: 'study',
-    accent: 'var(--c-study)',
-  },
-  {
-    name: 'MehtApp',
-    desc: 'Diyanet vakitleri, ezan uyarısı, namaz takibi ve widget’lar · Galaxy Watch · Android',
-    href: 'https://ezan.akts.tr',
-    icon: 'ezan',
-    accent: 'var(--c-ezan)',
   },
   {
     name: 'BlankReel',
