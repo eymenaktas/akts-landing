@@ -87,6 +87,11 @@ açık iş kalmadı; sıradaki iş Ezan Vaktim uygulamasında
       kategori Yaşam Tarzı, iletişim, mağaza sayfası (store/play), dahili test taslağı (versionCode 9).
       Yükleme anahtarları `~/Desktop/projects/_imza-anahtarlari/` (git dışı, yedeklenmeli).
 
+- [x] **2026-09-26 akşam:** 20 depo Akts-Studio org'una taşındı (TeknoAIHL-Pulse geri kişisel; `eymenaktas/akts-studio` yönlendirme deposu).
+      Akts Studio logosu `public/brand/`. Tüm site footer'ları "Akts Studio". Landing uygulama vitrini, portfolyo roller +
+      MaskeDev, OyunHub turuncu yeniden tasarım (açık kaynak koleksiyonu kaldırıldı), mail giriş paneli, maskepacks oyun galerisi.
+      Play: iki uygulamaya Wear OS form faktörü, saat görselleri ve saat paketleri (MehtApp 1009, StudyTrack 1003) dahili test taslağı.
+
 ## Sıradaki adım
 
 Play: MehtApp içerik derecelendirmesi (IARC koşulları, Eymen onayı), 12 test kullanıcısı e-postası, kapalı test; StudyTrack 48 MB AAB (`studytrack/android/app/build/outputs/bundle/release/app-release.aab`) Eymen elle yükleyecek. Landing'de iş yok. Yeni bir "yakında" işi olursa `upcoming` dizisine eklemek
