@@ -7,7 +7,7 @@ import type { LogoName } from '@/data/site'
  * Aktaş Mail : kendi markamız (degrade karo + iki tonlu A)
  * OyunHub    : sitenin favicon'undaki şimşek (blur filtreleri atıldı)
  * n8n        : n8n'in düğüm-grafik markası, marka rengi #ea4b71
- * Ezan Vaktim, StudyTrack: uygulamaların kendi ikonları
+ * MehtApp, StudyTrack: uygulamaların kendi ikonları
  * Maske Packs: paketin pikselli simgesi (portfolyodakiyle aynı görsel)
  * kod/zarf   : tek renk glif — satırın accent rengini alır
  */
@@ -77,19 +77,12 @@ export function LogoDefs() {
           <path d="M7 14 L24 26 L41 14" />
         </g>
 
-        {/* Ezan Vaktim — uygulamanın kendi ikonu (koyu yeşil karo, kubbe, iki
-            minare, altın hilâl). Yollar Android ikonundan (108'lik tuval)
-            birebir alındı; karoya %55 ölçekle oturtuldu. */}
+        {/* MehtApp — uygulamanın kendi ikonu: kubbe, hilâlli alem ve arkada
+            silik ay. Yollar Android ikonundan (108'lik tuval) alındı. */}
         <g id="i-ezan">
           <rect x="2" y="2" width="44" height="44" rx="12" fill="#0b3b2e" />
-          <g transform="translate(24 25) scale(.55) translate(-54 -47)">
-            <path fill="#f0ce72" d="M61.56,31.75 A9.5,9.5 0 1,1 56.11,16.74 A8,8 0 1,0 61.56,31.75 Z" />
-            <path fill="#f0ce72" d="M53.1,36 h1.8 v6 h-1.8 z" />
-            <path fill="#fff" d="M42,70 C42,60 45,52 54,42 C63,52 66,60 66,70 Z" />
-            <path fill="#fff" d="M40,70 h28 v4 h-28 z" />
-            <path fill="#fff" d="M31.2,46 l1.8,-6 l1.8,6 z M31.4,46 h3.2 v28 h-3.2 z M30.2,51 h5.6 v2.2 h-5.6 z" />
-            <path fill="#fff" d="M73.2,46 l1.8,-6 l1.8,6 z M73.4,46 h3.2 v28 h-3.2 z M72.2,51 h5.6 v2.2 h-5.6 z" />
-            <path fill="#fff" d="M26,74 h56 v4 h-56 z" />
+          <g transform="translate(2 2) scale(.4074) translate(54 54) scale(1.08) translate(-54 -53)">
+            <circle cx="72" cy="36" r="16" fill="#fff" fillOpacity=".08" /><path fill="#ecc862" d="M26,84 V70 A28,28 0 0,1 82,70 V84 Z" /><rect x="22" y="82" width="64" height="6" rx="3" fill="#ecc862" /><path d="M54,42 V30" stroke="#f0ce72" strokeWidth="3" strokeLinecap="round" /><path fill="#f0ce72" d="M60.61,26.30 A7,7 0 1,1 54.42,17.01 A5.60,5.60 0 0,0 60.61,26.30 Z" />
           </g>
         </g>
 
@@ -111,15 +104,13 @@ export function LogoDefs() {
           <image href="/assets/maske.png" x="4" y="4" width="40" height="40" style={{ imageRendering: 'pixelated' }} />
         </g>
 
-        {/* StudyTrack — uygulamanın kendi ikonu (açık kitap + onay). Görsel
-            olduğu için karo zemini ikondaki dairenin rengi; daire karoya
-            karışıyor. */}
+        {/* StudyTrack — uygulamanın kendi ikonu (açık kitap + onay), zemini
+            ikonla aynı renk. */}
         <clipPath id="c-study">
           <rect x="2" y="2" width="44" height="44" rx="12" />
         </clipPath>
         <g id="i-study">
-          <rect x="2" y="2" width="44" height="44" rx="12" fill="#ccdcdb" />
-          <image href="/assets/studytrack.png" x="-17" y="-16" width="82" height="82" clipPath="url(#c-study)" />
+          <image href="/assets/studytrack.png" x="2" y="2" width="44" height="44" clipPath="url(#c-study)" />
         </g>
       </defs>
     </svg>

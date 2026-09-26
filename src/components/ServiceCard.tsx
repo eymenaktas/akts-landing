@@ -51,7 +51,7 @@ export function ServiceCard({ item, delay }: { item: Link; delay: number }) {
           />
         </span>
 
-        <div className={cn('min-w-0', wide ? 'flex-1' : 'mt-auto')}>
+        <div className={cn('min-w-0', wide && 'flex-1')}>
           <div className="flex items-center gap-2">
             <span className={cn('font-semibold tracking-[-0.02em]', wide && 'text-lg')}>
               {item.name}

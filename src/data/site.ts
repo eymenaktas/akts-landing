@@ -52,8 +52,8 @@ export const services: Link[] = [
     accent: 'var(--c-study)',
   },
   {
-    name: 'Ezan Vaktim',
-    desc: 'Namaz vakitleri, kıble, zikirmatik, takip ve widget’lar · Galaxy Watch · Android',
+    name: 'MehtApp',
+    desc: 'Diyanet vakitleri, ezan uyarısı, namaz takibi ve widget’lar · Galaxy Watch · Android',
     href: 'https://ezan.akts.tr',
     icon: 'ezan',
     accent: 'var(--c-ezan)',
