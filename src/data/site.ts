@@ -104,6 +104,13 @@ export const people: Person[] = [
         accent: 'var(--c-github)',
       },
       {
+        name: 'Akts Studio',
+        desc: 'github.com/Akts-Studio',
+        href: 'https://github.com/Akts-Studio',
+        icon: 'github',
+        accent: 'var(--c-github)',
+      },
+      {
         name: 'Mail gönder',
         desc: 'eymen@akts.tr',
         href: 'mailto:eymen@akts.tr',

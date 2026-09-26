@@ -27,11 +27,10 @@ export function LogoDefs() {
           <path d="M18.4 27.5 H29.6" stroke="#c2e7ff" strokeWidth="4.4" strokeLinecap="round" />
         </g>
 
+        {/* OyunHub — sitenin kendi karosu: turuncu zemin, oyun kolu. */}
         <g id="i-oyun">
-          <path
-            fill="#863bff"
-            d="M25.946 44.938c-.664.845-2.021.375-2.021-.698V33.937a2.26 2.26 0 0 0-2.262-2.262H10.287c-.92 0-1.456-1.04-.92-1.788l7.48-10.471c1.07-1.497 0-3.578-1.842-3.578H1.237c-.92 0-1.456-1.04-.92-1.788L10.013.474c.214-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.471c-1.07 1.498 0 3.579 1.842 3.579h11.377c.943 0 1.473 1.088.89 1.83L25.947 44.94z"
-          />
+          <rect x="2" y="2" width="44" height="44" rx="12" fill="#ff4d1f" />
+          <path transform="translate(9.2 9.2) scale(1.235)" d="M6 11h4 M8 9v4 M15 12h.01 M18 10h.01 M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" fill="none" stroke="#140a05" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </g>
 
         <g id="i-n8n" stroke="#ea4b71" strokeWidth="3.6" strokeLinecap="round" fill="#ea4b71">

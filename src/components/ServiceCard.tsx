@@ -12,6 +12,8 @@ import type { Link } from '@/data/site'
  * Hiyerarşi buradan geliyor — Aktaş Mail alan adının vitrini, öbür
  * ikisi yanında duran servisler.
  */
+const APP_ICONS = new Set(['oyun', 'ezan', 'study', 'blankreel', 'maske'])
+
 export function ServiceCard({ item, delay }: { item: Link; delay: number }) {
   const wide = !!item.featured
 
@@ -35,21 +37,32 @@ export function ServiceCard({ item, delay }: { item: Link; delay: number }) {
 
         {/* Logo kendi karosunda: markanın renginden çok soluk bir zemin
             alıyor, böylece monokrom kartta renk noktası oluyor. */}
-        <span
-          className={cn(
-            'grid shrink-0 place-items-center rounded-xl border transition-transform duration-500 group-hover:scale-105',
-            wide ? 'h-14 w-14' : 'h-12 w-12',
-          )}
-          style={{
-            background: 'color-mix(in srgb, var(--brand) 12%, transparent)',
-            borderColor: 'color-mix(in srgb, var(--brand) 22%, transparent)',
-          }}
-        >
+        {APP_ICONS.has(item.icon) ? (
+          // Uygulama ikonu kendi karosuyla geliyor; ikinci bir çerçeve onu sıkıştırıyordu.
           <Logo
             name={item.icon}
-            className={cn(wide ? 'h-8 w-8' : 'h-7 w-7', wide && 'pulse-glow')}
+            className={cn(
+              'shrink-0 drop-shadow-sm transition-transform duration-500 group-hover:scale-105',
+              wide ? 'h-14 w-14' : 'h-12 w-12',
+            )}
           />
-        </span>
+        ) : (
+          <span
+            className={cn(
+              'grid shrink-0 place-items-center rounded-xl border transition-transform duration-500 group-hover:scale-105',
+              wide ? 'h-14 w-14' : 'h-12 w-12',
+            )}
+            style={{
+              background: 'color-mix(in srgb, var(--brand) 12%, transparent)',
+              borderColor: 'color-mix(in srgb, var(--brand) 22%, transparent)',
+            }}
+          >
+            <Logo
+              name={item.icon}
+              className={cn(wide ? 'h-8 w-8' : 'h-7 w-7', wide && 'pulse-glow')}
+            />
+          </span>
+        )}
 
         <div className={cn('min-w-0', wide && 'flex-1')}>
           <div className="flex items-center gap-2">
