@@ -82,17 +82,13 @@ export function Footer() {
       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
         <div className="space-y-3">
           <div className="flex items-center gap-2 text-[15px] font-semibold tracking-[-0.02em]">
-            <span
-              className="h-1.5 w-1.5 rounded-full"
-              style={{ background: 'var(--c-mailapp)' }}
-              aria-hidden="true"
-            />
-            akts.tr
+            <img src="/brand/akts-studio.svg" alt="" className="h-5 w-5 rounded-[5px]" />
+            Akts Studio
           </div>
           <p className="max-w-[28ch] text-[13px] leading-relaxed text-dim">
             Bu alan adı altındaki siteler ve servisler. Analitik yok, izleme yok.
           </p>
-          <p className="pt-2 text-[13px] text-dim">© {new Date().getFullYear()} akts.tr</p>
+          <p className="pt-2 text-[13px] text-dim">© {new Date().getFullYear()} Akts Studio</p>
         </div>
 
         {columns.map((column) => (
